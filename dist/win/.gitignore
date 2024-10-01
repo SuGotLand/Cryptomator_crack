@@ -1,0 +1,10 @@
+runtime
+Cryptomator
+installer
+*.wixobj
+*.pdb
+*.msi
+*.exe
+*.jmod
+resources/jfxJmods.zip
+license.rtf

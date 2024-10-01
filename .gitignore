@@ -1,0 +1,18 @@
+#JETBRINS IDEA
+
+.idea/
+
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Maven #
+target/
+out/
+pom.xml.versionsBackup
+
+# Java Crash Logs
+hs_err_pid*.log
