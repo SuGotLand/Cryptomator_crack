@@ -1,5 +1,5 @@
-[![cryptomator](cryptomator.png)](https://cryptomator.org/)
-
+[![cryptomator](cryptomator.png)](https://github.com/SuGotLand/Cryptomator_crack)
+[![Latest Release](https://img.shields.io/github/v/release/SuGotLand/Cryptomator_crack.svg)](https://github.com/SuGotLand/Cryptomator_crack/releases)
 [![Community](https://img.shields.io/badge/help-Community-orange.svg)](https://community.cryptomator.org)
 
 ## Supporting Cryptomator_crack
@@ -11,7 +11,7 @@ The origin cryptomator has a supporter supporter certificate controller, in this
 
 Cryptomator offers multi-platform transparent client-side encryption of your files in the cloud.
 
-Download native binaries of Cryptomator on [GitHub release page]() or clone and build Cryptomator using Maven (instructions below).
+Download native binaries of Cryptomator on [GitHub release page](https://github.com/SuGotLand/Cryptomator_crack/releases) or clone and build Cryptomator using Maven (instructions below).
 
 ## Features
 
