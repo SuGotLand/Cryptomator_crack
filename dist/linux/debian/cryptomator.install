@@ -1,0 +1,9 @@
+cryptomator-crack usr/lib
+common/org.cryptomator.Cryptomator-crack.desktop usr/share/applications
+common/org.cryptomator.Cryptomator-crack.svg usr/share/icons/hicolor/scalable/apps
+common/org.cryptomator.Cryptomator-crack.tray.svg usr/share/icons/hicolor/scalable/apps
+common/org.cryptomator.Cryptomator-crack.tray-unlocked.svg usr/share/icons/hicolor/scalable/apps
+common/org.cryptomator.Cryptomator-crack256.png usr/share/icons/hicolor/256x256/apps
+common/org.cryptomator.Cryptomator-crack512.png usr/share/icons/hicolor/512x512/apps
+common/org.cryptomator.Cryptomator-crack.metainfo.xml usr/share/metainfo
+common/application-vnd.cryptomator-crack.vault.xml usr/share/mime/packages
