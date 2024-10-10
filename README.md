@@ -58,10 +58,26 @@ mvn clean install
 
 This will build all the jars and bundle them together with their OS-specific dependencies under `target`. This can now be used to build native packages.
 
-### Run Scripts
+### Release Build
+
+#### Windows
 
 ```powershell
 .\dist\win\build.bat
+```
+
+#### Linux AppImage
+
+```shell
+$ cd ./dist/linux/appimage
+
+$ ./build.sh
+```
+
+#### Linux DEB
+
+```shell
+$ ./dist/linux/deb-build.sh
 ```
 
 ## License
