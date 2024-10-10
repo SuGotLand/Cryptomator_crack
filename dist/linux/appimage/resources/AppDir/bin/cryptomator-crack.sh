@@ -16,7 +16,7 @@ elif command -v pacman &> /dev/null; then # don't forget arch
 fi
 
 if [ "$GTK2_PRESENT" -eq 0 ] && [ "$GTK3_PRESENT" -ne 0 ]; then
-	bin/Cryptomator-gtk2 $@
+	bin/Cryptomator-crack-gtk2 $@
 else
-	bin/Cryptomator $@
+	bin/Cryptomator-crack $@
 fi
