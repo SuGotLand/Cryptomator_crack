@@ -1,3 +1,3 @@
-usr/lib/cryptomator/bin/cryptomator-crack usr/bin/cryptomator-crack
+usr/lib/cryptomator-crack/bin/cryptomator-crack usr/bin/cryptomator-crack
 usr/share/icons/hicolor/scalable/apps/org.cryptomator.Cryptomator-crack.tray.svg usr/share/icons/hicolor/symbolic/apps/org.cryptomator.Cryptomator-crack.tray-symbolic.svg
 usr/share/icons/hicolor/scalable/apps/org.cryptomator.Cryptomator-crack.tray-unlocked.svg usr/share/icons/hicolor/symbolic/apps/org.cryptomator.Cryptomator-crack.tray-unlocked-symbolic.svg
