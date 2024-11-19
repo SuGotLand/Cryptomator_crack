@@ -67,7 +67,7 @@ if( $jmodsChecksumActual -ne $javaFxJmodsSHA256 ) {
 	exit 1;
 }
 Expand-Archive -Path $javaFxJmods -Force -DestinationPath ".\resources\"
-Remove-Item -Recurse -Force -Path ".\resources\javafx-jmods-23"
+Remove-Item -Recurse -Force -Path ".\resources\javafx-jmods"
 Move-Item -Force -Path ".\resources\javafx-jmods-*" -Destination ".\resources\javafx-jmods" -ErrorAction Stop
 
 
