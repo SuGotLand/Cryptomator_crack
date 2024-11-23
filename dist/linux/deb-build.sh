@@ -14,8 +14,8 @@ read SEM_VER_STR
 echo "版本为${SEM_VER_STR}"
 COMMENT
 SEM_VER_NUM=`mvn -f ../../pom.xml -Dexec.executable='echo' -Dexec.args='${project.version}' --non-recursive exec:exec -q`
-SEM_VER_STR=`echo ${SEM_VER_NUM}-release`
-REVISION_NUM=`git rev-list --count HEAD`
+export SEM_VER_STR=`echo ${SEM_VER_NUM}-release`
+export REVISION_NUM=`git rev-list --count HEAD`
 cd ../..
 mvn clean package -Plinux -Djavafx.platform=linux -DskipTests
 
@@ -75,6 +75,9 @@ export RFC2822_TIMESTAMP=`date --rfc-2822`
 export DISABLE_UPDATE_CHECK=0
 export PPA_VERSION=`echo $PPA`
 echo $PPA_VERSION
+export VERSION_NUM=`echo $SEM_VER_NUM`
+export SEMVER_STR=`echo $SEM_VER_STR`
+
 envsubst '${SEMVER_STR} ${VERSION_NUM} ${REVISION_NUM} ${DISABLE_UPDATE_CHECK}' < dist/linux/debian/rules > pkgdir/debian/rules
 envsubst '${PPA_VERSION} ${RFC2822_TIMESTAMP}' < dist/linux/debian/changelog > pkgdir/debian/changelog
 find . -name "*.jar" >> pkgdir/debian/source/include-binaries
