@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cryptomator</groupId>
 	<artifactId>cryptomator-crack</artifactId>
-	<version>1.15.1</version>
+	<version>1.15.2</version>
 	<name>Cryptomator Desktop App</name>
 
 	<organization>

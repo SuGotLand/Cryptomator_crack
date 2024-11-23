@@ -13,16 +13,22 @@ echo "请输入版本号(e.g. 1.7.0-beta1, 1.5.1-release): "
 read SEM_VER_STR
 echo "版本为${SEM_VER_STR}"
 COMMENT
-SEM_VER_STR=1.15.1-release
+SEM_VER_STR=1.15.2-release
 SEM_VER_NUM=`echo ${SEM_VER_STR} | sed -E 's/([0-9]+\.[0-9]+\.[0-9]+).*/\1/'`
 REVCOUNT=`git rev-list --count HEAD`
 cd ../..
 mvn clean package -Plinux -Djavafx.platform=linux -DskipTests
 
-OPENJFX_JMODS_AMD64="https://download2.gluonhq.com/openjfx/23/openjfx-23_linux-x64_bin-jmods.zip"
-OPENJFX_JMODS_AMD64_HASH='72a2390a117e024d1a897cbe216c7c99cb464519f488ae3701186cef5ab5a116'
-OPENJFX_JMODS_AARCH64="https://download2.gluonhq.com/openjfx/23/openjfx-23_linux-aarch64_bin-jmods.zip"
-OPENJFX_JMODS_AARCH64_HASH='dda2719d7dcac1ac3e33d853974e7baf5b55b7d5ea2a37a0162d25b8b32d0e36'
+#OPENJFX_JMODS_AMD64="https://download2.gluonhq.com/openjfx/23/openjfx-23_linux-x64_bin-jmods.zip"
+#OPENJFX_JMODS_AMD64_HASH='72a2390a117e024d1a897cbe216c7c99cb464519f488ae3701186cef5ab5a116'
+#OPENJFX_JMODS_AARCH64="https://download2.gluonhq.com/openjfx/23/openjfx-23_linux-aarch64_bin-jmods.zip"
+#OPENJFX_JMODS_AARCH64_HASH='dda2719d7dcac1ac3e33d853974e7baf5b55b7d5ea2a37a0162d25b8b32d0e36'
+
+OPENJFX_JMODS_AMD64='https://download2.gluonhq.com/openjfx/22.0.2/openjfx-22.0.2_linux-x64_bin-jmods.zip'
+OPENJFX_JMODS_AMD64_HASH='d44bff3b94d5668fdee18a938d7b1269026d663d44765f02d29a9bdfd3fa1eb0'
+OPENJFX_JMODS_AARCH64='https://download2.gluonhq.com/openjfx/22.0.2/openjfx-22.0.2_linux-aarch64_bin-jmods.zip'
+OPENJFX_JMODS_AARCH64_HASH='3d5457136690c4f5bb9522d38b45218e045bdac13c24aa4c808c7c8d17d039c7'
+
 
 curl -L $OPENJFX_JMODS_AMD64 -o openjfx-amd64.zip
 echo "${OPENJFX_JMODS_AMD64_HASH}  openjfx-amd64.zip" | shasum -a256 --check
