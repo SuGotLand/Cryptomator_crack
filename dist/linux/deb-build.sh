@@ -30,14 +30,14 @@ OPENJFX_JMODS_AARCH64='https://download2.gluonhq.com/openjfx/22.0.2/openjfx-22.0
 OPENJFX_JMODS_AARCH64_HASH='3d5457136690c4f5bb9522d38b45218e045bdac13c24aa4c808c7c8d17d039c7'
 
 
-#curl -L $OPENJFX_JMODS_AMD64 -o openjfx-amd64.zip
-#echo "${OPENJFX_JMODS_AMD64_HASH}  openjfx-amd64.zip" | shasum -a256 --check
-#mkdir -p jmods/amd64
-#unzip -o -j openjfx-amd64.zip \*/javafx.base.jmod \*/javafx.controls.jmod \*/javafx.fxml.jmod \*/javafx.graphics.jmod -d jmods/amd64
-#curl -L $OPENJFX_JMODS_AARCH64 -o openjfx-aarch64.zip
-#echo "${OPENJFX_JMODS_AARCH64_HASH}  openjfx-aarch64.zip" | shasum -a256 --check
-#mkdir -p jmods/aarch64
-#unzip -o -j openjfx-aarch64.zip \*/javafx.base.jmod \*/javafx.controls.jmod \*/javafx.fxml.jmod \*/javafx.graphics.jmod -d jmods/aarch64
+curl -L $OPENJFX_JMODS_AMD64 -o openjfx-amd64.zip
+echo "${OPENJFX_JMODS_AMD64_HASH}  openjfx-amd64.zip" | shasum -a256 --check
+mkdir -p jmods/amd64
+unzip -o -j openjfx-amd64.zip \*/javafx.base.jmod \*/javafx.controls.jmod \*/javafx.fxml.jmod \*/javafx.graphics.jmod -d jmods/amd64
+curl -L $OPENJFX_JMODS_AARCH64 -o openjfx-aarch64.zip
+echo "${OPENJFX_JMODS_AARCH64_HASH}  openjfx-aarch64.zip" | shasum -a256 --check
+mkdir -p jmods/aarch64
+unzip -o -j openjfx-aarch64.zip \*/javafx.base.jmod \*/javafx.controls.jmod \*/javafx.fxml.jmod \*/javafx.graphics.jmod -d jmods/aarch64
 
 JMOD_VERSION_AMD64=$(jmod describe jmods/amd64/javafx.base.jmod | head -1)
 JMOD_VERSION_AMD64=${JMOD_VERSION_AMD64#*@}
