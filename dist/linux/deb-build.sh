@@ -13,8 +13,8 @@ echo "请输入版本号(e.g. 1.7.0-beta1, 1.5.1-release): "
 read SEM_VER_STR
 echo "版本为${SEM_VER_STR}"
 COMMENT
-SEM_VER_STR=1.15.2-release
-SEM_VER_NUM=`echo ${SEM_VER_STR} | sed -E 's/([0-9]+\.[0-9]+\.[0-9]+).*/\1/'`
+SEM_VER_NUM=`mvn -Dexec.executable='echo' -Dexec.args='${project.version}' --non-recursive exec:exec -q`
+SEM_VER_STR=`echo ${SEM_VER_NUM}-release`
 REVCOUNT=`git rev-list --count HEAD`
 cd ../..
 mvn clean package -Plinux -Djavafx.platform=linux -DskipTests
