@@ -63,7 +63,9 @@ This will build all the jars and bundle them together with their OS-specific dep
 #### Windows
 
 ```powershell
-.\dist\win\build.bat
+$ cd .\dist\win\
+
+$ .\build.bat
 ```
 
 #### Linux AppImage
