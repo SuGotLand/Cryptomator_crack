@@ -15,7 +15,7 @@ echo "版本为${SEM_VER_STR}"
 COMMENT
 SEM_VER_NUM=`mvn -f ../../pom.xml -Dexec.executable='echo' -Dexec.args='${project.version}' --non-recursive exec:exec -q`
 SEM_VER_STR=`echo ${SEM_VER_NUM}-release`
-REVCOUNT=`git rev-list --count HEAD`
+REVISION_NUM=`git rev-list --count HEAD`
 cd ../..
 mvn clean package -Plinux -Djavafx.platform=linux -DskipTests
 
@@ -30,14 +30,14 @@ OPENJFX_JMODS_AARCH64='https://download2.gluonhq.com/openjfx/22.0.2/openjfx-22.0
 OPENJFX_JMODS_AARCH64_HASH='3d5457136690c4f5bb9522d38b45218e045bdac13c24aa4c808c7c8d17d039c7'
 
 
-curl -L $OPENJFX_JMODS_AMD64 -o openjfx-amd64.zip
-echo "${OPENJFX_JMODS_AMD64_HASH}  openjfx-amd64.zip" | shasum -a256 --check
-mkdir -p jmods/amd64
-unzip -o -j openjfx-amd64.zip \*/javafx.base.jmod \*/javafx.controls.jmod \*/javafx.fxml.jmod \*/javafx.graphics.jmod -d jmods/amd64
-curl -L $OPENJFX_JMODS_AARCH64 -o openjfx-aarch64.zip
-echo "${OPENJFX_JMODS_AARCH64_HASH}  openjfx-aarch64.zip" | shasum -a256 --check
-mkdir -p jmods/aarch64
-unzip -o -j openjfx-aarch64.zip \*/javafx.base.jmod \*/javafx.controls.jmod \*/javafx.fxml.jmod \*/javafx.graphics.jmod -d jmods/aarch64
+#curl -L $OPENJFX_JMODS_AMD64 -o openjfx-amd64.zip
+#echo "${OPENJFX_JMODS_AMD64_HASH}  openjfx-amd64.zip" | shasum -a256 --check
+#mkdir -p jmods/amd64
+#unzip -o -j openjfx-amd64.zip \*/javafx.base.jmod \*/javafx.controls.jmod \*/javafx.fxml.jmod \*/javafx.graphics.jmod -d jmods/amd64
+#curl -L $OPENJFX_JMODS_AARCH64 -o openjfx-aarch64.zip
+#echo "${OPENJFX_JMODS_AARCH64_HASH}  openjfx-aarch64.zip" | shasum -a256 --check
+#mkdir -p jmods/aarch64
+#unzip -o -j openjfx-aarch64.zip \*/javafx.base.jmod \*/javafx.controls.jmod \*/javafx.fxml.jmod \*/javafx.graphics.jmod -d jmods/aarch64
 
 JMOD_VERSION_AMD64=$(jmod describe jmods/amd64/javafx.base.jmod | head -1)
 JMOD_VERSION_AMD64=${JMOD_VERSION_AMD64#*@}
@@ -59,7 +59,7 @@ if [ $POM_JFX_VERSION -ne $JMOD_VERSION_AARCH64 ]; then
   >&2 echo "Major JavaFX version in pom.xml (${POM_JFX_VERSION}) != aarch64 jmod version (${JMOD_VERSION_AARCH64})"
   exit 1
 fi
-rm -rf cryptomator_*
+rm -rf cryptomator-crack_*
 mkdir pkgdir
 cp -r target/libs pkgdir
 cp -r target/mods pkgdir
