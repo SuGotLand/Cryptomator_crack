@@ -19,16 +19,16 @@ if [[ ! "${CPU_ARCH}" =~ x86_64|aarch64 ]]; then echo "Platform ${CPU_ARCH} not 
 mvn -f ../../../pom.xml versions:set -DnewVersion=${SEMVER_STR}
 
 # compile
-mvn -f ../../../pom.xml clean package -Plinux -DskipTests -Djavafx.platform=linux
+mvn -B -f ../../../pom.xml clean package -Plinux -DskipTests -Djavafx.platform=linux
 cp ../../../LICENSE.txt ../../../target
 cp ../../../target/cryptomator-*.jar ../../../target/mods
 
-JAVAFX_VERSION=23
+JAVAFX_VERSION=23.0.2
 JAVAFX_ARCH="x64"
-JAVAFX_JMODS_SHA256='72a2390a117e024d1a897cbe216c7c99cb464519f488ae3701186cef5ab5a116'
+JAVAFX_JMODS_SHA256='063baebc6922e4a89c94b9dfb7a4f53e59e8d6fec400d4e670b31bc2ab324dec'
 if [ "${CPU_ARCH}" = "aarch64" ]; then
     JAVAFX_ARCH="aarch64"
-    JAVAFX_JMODS_SHA256='dda2719d7dcac1ac3e33d853974e7baf5b55b7d5ea2a37a0162d25b8b32d0e36'
+    JAVAFX_JMODS_SHA256='9bbedaeae1590b69e2b22237bda310936df33e344dbc243bea2e86acaab3a0d8'
 fi
 
 # download javaFX jmods
@@ -76,7 +76,7 @@ ${JAVA_HOME}/bin/jpackage \
     --vendor "SuGotLand" \
     --java-options "--enable-preview" \
     --java-options "--enable-native-access=org.cryptomator.jfuse.linux.amd64,org.cryptomator.jfuse.linux.aarch64,org.purejava.appindicator" \
-    --copyright "(C) SuGotLand sugotland@outlook.com" \
+    --copyright "(C) SuGotLand " \
     --java-options "-Xss5m" \
     --java-options "-Xmx256m" \
     --app-version "${VERSION}.${REVISION_NO}" \
@@ -91,6 +91,7 @@ ${JAVA_HOME}/bin/jpackage \
     --java-options "-Dcryptomator.showTrayIcon=true" \
     --java-options "-Dcryptomator.integrationsLinux.trayIconsDir=\"@{appdir}/usr/share/icons/hicolor/symbolic/apps\"" \
     --java-options "-Dcryptomator.buildNumber=\"appimage-${REVISION_NO}\"" \
+    --java-options "-Dcryptomator.networking.truststore.p12Path=\"/etc/cryptomator/certs.p12\"" \
     --resource-dir ../resources
 
 # transform AppDir
@@ -108,13 +109,13 @@ cp ../common/org.cryptomator.Cryptomator-crack.desktop Cryptomator-crack.AppDir/
 cp ../common/org.cryptomator.Cryptomator-crack.metainfo.xml Cryptomator-crack.AppDir/usr/share/metainfo/org.cryptomator.Cryptomator-crack.metainfo.xml
 cp ../common/application-vnd.cryptomator-crack.vault.xml Cryptomator-crack.AppDir/usr/share/mime/packages/application-vnd.cryptomator-crack.vault.xml
 ln -s usr/share/icons/hicolor/scalable/apps/org.cryptomator.Cryptomator-crack.svg Cryptomator-crack.AppDir/org.cryptomator.Cryptomator-crack.svg
-ln -s usr/share/icons/hicolor/scalable/apps/org.cryptomator.Cryptomator-crack.svg Cryptomator-crack.AppDir/Cryptomator-crack.svg
 ln -s usr/share/icons/hicolor/scalable/apps/org.cryptomator.Cryptomator-crack.svg Cryptomator-crack.AppDir/.DirIcon
-ln -s usr/share/applications/org.cryptomator.Cryptomator-crack.desktop Cryptomator-crack.AppDir/Cryptomator-crack.desktop
+ln -s usr/share/applications/org.cryptomator.Cryptomator-crack.desktop Cryptomator-crack.AppDir/org.cryptomator.Cryptomator-crack.desktop
+ln -s org.cryptomator.Cryptomator-crack.metainfo.xml Cryptomator-crack.AppDir/usr/share/metainfo/org.cryptomator.Cryptomator-crack.appdata.xml
 ln -s bin/cryptomator-crack.sh Cryptomator-crack.AppDir/AppRun
 
 # load AppImageTool
-curl -L https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-${CPU_ARCH}.AppImage -o /tmp/appimagetool.AppImage
+curl -L https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-${CPU_ARCH}.AppImage -o /tmp/appimagetool.AppImage
 chmod +x /tmp/appimagetool.AppImage
 
 # create AppImage

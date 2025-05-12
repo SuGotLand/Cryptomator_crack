@@ -1,5 +1,6 @@
 [Desktop Entry]
-Name=Cryptomator-crack
+Name=Cryptomator
+Name[zh_CN]=Cryptomator破解版
 Comment=Cloud Storage Encryption Utility
 Exec=cryptomator-crack %F
 Icon=org.cryptomator.Cryptomator-crack
@@ -9,4 +10,3 @@ Categories=Utility;Security;FileTools;
 StartupNotify=true
 StartupWMClass=org.cryptomator.launcher.Cryptomator$MainApp
 MimeType=application/vnd.cryptomator.encrypted;application/vnd.cryptomator.vault;
-Name[zh_CN]=Cryptomator破解版
