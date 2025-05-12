@@ -1,8 +1,8 @@
 Source: cryptomator-crack
-Maintainer: SuGotLand
+Maintainer: SuGotLand <sugotland@outlook.com>
 Section: utils
 Priority: optional
-Build-Depends: debhelper (>=10), temurin-22-jdk (>=22.0.2.0.0+9-1), libgtk-3-0,  libxxf86vm1, libgl1
+Build-Depends: debhelper (>=10), temurin-23-jdk (>=23.0.2.0.0+7-1), libgtk-3-0,  libxxf86vm1, libgl1
 Standards-Version: 4.5.0
 Homepage: https://github.com/SuGotLand/Cryptomator_crack
 Vcs-Git: https://github.com/SuGotLand/Cryptomator_crack.git

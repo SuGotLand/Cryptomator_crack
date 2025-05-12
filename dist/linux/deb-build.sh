@@ -19,17 +19,12 @@ export REVISION_NUM=`git rev-list --count HEAD`
 cd ../..
 mvn clean package -Plinux -Djavafx.platform=linux -DskipTests
 
-#OPENJFX_JMODS_AMD64="https://download2.gluonhq.com/openjfx/23/openjfx-23_linux-x64_bin-jmods.zip"
-#OPENJFX_JMODS_AMD64_HASH='72a2390a117e024d1a897cbe216c7c99cb464519f488ae3701186cef5ab5a116'
-#OPENJFX_JMODS_AARCH64="https://download2.gluonhq.com/openjfx/23/openjfx-23_linux-aarch64_bin-jmods.zip"
-#OPENJFX_JMODS_AARCH64_HASH='dda2719d7dcac1ac3e33d853974e7baf5b55b7d5ea2a37a0162d25b8b32d0e36'
+OPENJFX_JMODS_AMD64='https://download2.gluonhq.com/openjfx/23.0.2/openjfx-23.0.2_linux-x64_bin-jmods.zip'
+OPENJFX_JMODS_AMD64_HASH='063baebc6922e4a89c94b9dfb7a4f53e59e8d6fec400d4e670b31bc2ab324dec'
+OPENJFX_JMODS_AARCH64='https://download2.gluonhq.com/openjfx/23.0.2/openjfx-23.0.2_linux-aarch64_bin-jmods.zip'
+OPENJFX_JMODS_AARCH64_HASH='9bbedaeae1590b69e2b22237bda310936df33e344dbc243bea2e86acaab3a0d8'
 
-OPENJFX_JMODS_AMD64='https://download2.gluonhq.com/openjfx/22.0.2/openjfx-22.0.2_linux-x64_bin-jmods.zip'
-OPENJFX_JMODS_AMD64_HASH='d44bff3b94d5668fdee18a938d7b1269026d663d44765f02d29a9bdfd3fa1eb0'
-OPENJFX_JMODS_AARCH64='https://download2.gluonhq.com/openjfx/22.0.2/openjfx-22.0.2_linux-aarch64_bin-jmods.zip'
-OPENJFX_JMODS_AARCH64_HASH='3d5457136690c4f5bb9522d38b45218e045bdac13c24aa4c808c7c8d17d039c7'
-
-
+if [ ! -d jmods ]; then
 curl -L $OPENJFX_JMODS_AMD64 -o openjfx-amd64.zip
 echo "${OPENJFX_JMODS_AMD64_HASH}  openjfx-amd64.zip" | shasum -a256 --check
 mkdir -p jmods/amd64
@@ -38,6 +33,7 @@ curl -L $OPENJFX_JMODS_AARCH64 -o openjfx-aarch64.zip
 echo "${OPENJFX_JMODS_AARCH64_HASH}  openjfx-aarch64.zip" | shasum -a256 --check
 mkdir -p jmods/aarch64
 unzip -o -j openjfx-aarch64.zip \*/javafx.base.jmod \*/javafx.controls.jmod \*/javafx.fxml.jmod \*/javafx.graphics.jmod -d jmods/aarch64
+fi
 
 JMOD_VERSION_AMD64=$(jmod describe jmods/amd64/javafx.base.jmod | head -1)
 JMOD_VERSION_AMD64=${JMOD_VERSION_AMD64#*@}

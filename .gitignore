@@ -1,7 +1,4 @@
 #JETBRINS IDEA
-
-.idea/
-
 *.class
 
 # Package Files #
@@ -16,3 +13,6 @@ pom.xml.versionsBackup
 
 # Java Crash Logs
 hs_err_pid*.log
+
+cryptomator*
+jmods

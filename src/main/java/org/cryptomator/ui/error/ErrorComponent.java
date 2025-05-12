@@ -20,6 +20,8 @@ public interface ErrorComponent {
 	default Stage show() {
 		Stage stage = window();
 		stage.setScene(scene());
+		stage.setMinWidth(450);
+		stage.setMinHeight(450);
 		stage.show();
 		return stage;
 	}
